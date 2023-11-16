@@ -3,7 +3,10 @@
 
 # general
 **/*~
+**/*#
+**/.#*
 firmware/build/*
+firmware/targets/*/images
 
 
 # [home]
