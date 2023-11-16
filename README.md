@@ -58,3 +58,7 @@ you should see a directory structure like this:
 ├── README.md
 └── software
 ```
+
+A quick way to get started is to just fork this repo or copy it into a new repo.  If you clone this repo, be sure to 
+do so with the `--recurse-submodules` option.  Once you copy this repo, you can edit the target directory and 
+the corresponding `Makefile` and `ruckus.tlk` files.    
