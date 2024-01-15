@@ -5,7 +5,7 @@ target: bit
 export PRJ_VERSION = 0x00010000
 
 #Define target part
-export PRJ_PART = xck26-sfvc784-2lv-c
+export PRJ_PART = xc7a100tcsg324-1
 
 #Define the TOP_DIR path (point to location of the firmware/ directory)
 export TOP_DIR = $(abspath $(PWD)/../../)
