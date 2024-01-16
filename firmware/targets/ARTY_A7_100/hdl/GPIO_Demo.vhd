@@ -48,7 +48,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 --counter.
 use IEEE.std_logic_unsigned.all;
 
+library surf;
+use surf.StdRtlPkg.all;
+
 entity GPIO_demo is
+    Generic(
+      TPD_G             : time                  := 1 ns;
+      CLK_FREQ_G        : real                  := 100.0e6;
+      BAUD_RATE_G       : integer               := 9600;
+      BAUD_MULT_G       : integer range 1 to 16 := 16;
+      STOP_BITS_G       : integer range 1 to 2  := 1;
+      PARITY_G          : string                := "NONE";  -- "NONE" "ODD" "EVEN"
+      DATA_WIDTH_G      : integer range 5 to 8  := 8);
+
+
     Port ( SW 			: in  STD_LOGIC_VECTOR (3 downto 0);
            BTN 			: in  STD_LOGIC_VECTOR (3 downto 0);
            CLK 			: in  STD_LOGIC;
@@ -75,14 +88,6 @@ entity GPIO_demo is
 end GPIO_demo;
 
 architecture Behavioral of GPIO_demo is
-
-component  UART_RX_CTRL
-Port(DATA : out  STD_LOGIC_VECTOR (7 downto 0);
-     CLK : in  STD_LOGIC;
-     DATA_READY : out  STD_LOGIC;
-     UART_RX : in  STD_LOGIC
-     );
-end component;
 
 component UART_TX_CTRL
 Port(
@@ -138,9 +143,6 @@ end component;
 --                variable is set to zero. The button string length is stored in the StrEnd
 --                variable. The state is set to SEND_CHAR.
 type UART_STATE_TYPE is (RST_REG, LD_INIT_STR, SEND_CHAR, RDY_LOW, WAIT_RDY, WAIT_BTN, LD_BTN_STR);
-
-
-
 
 --The CHAR_ARRAY type is a variable length array of 8 bit std_logic_vectors. 
 --Each std_logic_vector contains an ASCII value and represents a character in
@@ -264,13 +266,14 @@ signal reset_cntr : std_logic_vector (17 downto 0) := (others=>'0');
 --signal for storing data received on UART
 signal uart_in : std_logic_vector(7 downto 0) := (others=>'0');
 signal uart_in_ready : std_logic := '0' ;
+signal uart_in_valid : std_logic := '0' ;
 signal uartRX : std_logic;
 signal UART_CLK : std_logic := '0';
 constant BIT_TMR_MAX : std_logic_vector(13 downto 0) := "10100010110000"; --10416 = (round(100MHz / 9600)) - 1
 --Counter that keeps track of the number of clock cycles the current bit has been held stable over the
 --UART RX line. It is used to signal when the ne
 signal bitTmr : std_logic_vector(13 downto 0) := (others => '0');
-
+signal reset : std_logic := '0';
 begin
 
 ----------------------------------------------------------
@@ -431,21 +434,6 @@ begin
 	end if;
 end process;
 
--- generate clock corresponding to UART Baud Rate
-baud_rate : process(CLK)
-begin
-    
-    if(rising_edge(CLK)) then
-        if bitTmr = BIT_TMR_MAX then
-            UART_CLK <= not UART_CLK;
-            bitTmr <= (others => '0');
-        else
-            bitTmr <= bitTmr + 1;
-        end if;
-    end if;    
-            
-end process;
-
 --Stream uart_in_ready and uart_in to PMOD pins for debugging
 debug_uart : process(CLK)
 variable counter : natural := 0;
@@ -465,17 +453,42 @@ begin
     end if;
     
 end process;            
-            
 
---Component used to read a byte of data over UART
-Inst_UART_RX_CTRL: UART_RX_CTRL port map(
-        DATA => uart_in,
-        CLK => UART_CLK,
-        DATA_READY => uart_in_ready,
-        UART_RX => uartRX
-        );
-uartRX <= UART_RXD;
-ja2 <= UART_RXD;
+   -------------------------------------------------------------------------------------------------
+   -- Baud Rate Generator.
+   -- Create a clock enable that is BAUD_MULT_G x the baud rate.
+   -- UartTx and UartRx use this.
+   -------------------------------------------------------------------------------------------------
+   U_UartBrg_1 : entity surf.UartBrg
+      generic map (
+         CLK_FREQ_G   => CLK_FREQ_G,
+         BAUD_RATE_G  => BAUD_RATE_G,
+         MULTIPLIER_G => BAUD_MULT_G)
+      port map (
+         clk       => CLK,              -- [in]
+         rst       => reset,            -- [in]
+         baudClkEn => UART_CLK);       -- [out]
+
+   -------------------------------------------------------------------------------------------------
+   -- UART Receiver
+   -------------------------------------------------------------------------------------------------
+   U_UartRx_1 : entity surf.UartRx
+      generic map (
+         TPD_G        => TPD_G,
+         PARITY_G     => PARITY_G,
+         BAUD_MULT_G  => BAUD_MULT_G,
+         DATA_WIDTH_G => DATA_WIDTH_G)
+      port map (
+         clk       => CLK,              -- [in]
+         rst       => reset,            -- [in]
+         baudClkEn => UART_CLK,         -- [in]
+         rdData    => uart_in,          -- [out]
+         rdValid   => uart_in_valid,    -- [out]
+         rdReady   => uart_in_ready,    -- [in]
+         rx        => uartRX);          -- [in]
+
+    uartRX <= UART_RXD;
+    ja2 <= UART_RXD;
 
 --Component used to send a byte of data over a UART line.
 Inst_UART_TX_CTRL: UART_TX_CTRL port map(

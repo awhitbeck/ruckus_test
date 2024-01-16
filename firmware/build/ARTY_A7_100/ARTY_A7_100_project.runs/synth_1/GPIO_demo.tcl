@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 8
 set_msg_config  -id {Synth 8-256}  -suppress 
 set_msg_config  -id {Synth 8-5545}  -suppress 
 set_msg_config  -id {Synth 8-5546}  -suppress 
@@ -166,13 +167,14 @@ set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_property webtalk.parent_dir /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.cache/wt [current_project]
 set_property parent.project_path /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.xpr [current_project]
+set_property XPM_LIBRARIES {XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property ip_repo_paths /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ip_repo [current_project]
 update_ip_catalog
 set_property ip_output_repo /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-set_property generic BUILD_INFO_G=2240'h5fd000a8cba96608a57c5924adae49eb1563901800010000415254595F41375F3130303A2056697661646F2076323032322E322C20636F7272656C61746F72342E666E616C2E676F7620284B65726E656C292C204275696C74204D6F6E204A616E2031352031313A34373A3536204353542032303234206279206177686974626531000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 [current_fileset]
+set_property generic BUILD_INFO_G=2240'h000000000000000000000000000000000000000000010000415254595F41375F3130303A2056697661646F2076323032322E322C20636F7272656C61746F72342E666E616C2E676F7620284B65726E656C292C204275696C7420547565204A616E2031362031373A30343A3539204353542032303234206279206177686974626531000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 [current_fileset]
 set src_rc [catch { 
   puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/synth.tcl"
   source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/synth.tcl
@@ -184,9 +186,15 @@ if {$src_rc} {
 }
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_vhdl -library surf {
+  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/general/rtl/StdRtlPkg.vhd
+  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/sync/rtl/Synchronizer.vhd
+  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/sync/rtl/SynchronizerEdge.vhd
+  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/protocols/uart/rtl/UartBrg.vhd
+  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/protocols/uart/rtl/UartRx.vhd
+}
 read_vhdl -library xil_defaultlib {
   /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/RGB_controller.vhd
-  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/UART_RX_CTRL.vhd
   /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/UART_TX_CTRL.vhd
   /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/debouncer.vhd
   /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/GPIO_Demo.vhd

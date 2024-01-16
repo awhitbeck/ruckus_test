@@ -242,11 +242,3 @@ set_property -dict {PACKAGE_PIN A9 IOSTANDARD LVCMOS33} [get_ports UART_RXD]
 #set_property -dict { PACKAGE_PIN B16   IOSTANDARD LVCMOS33 } [get_ports { vsnsvu }]; #IO_L7P_T1_AD2P_15 Sch=vsnsvu
 
 
-connect_debug_port u_ila_0/probe0 [get_nets [list {Inst_UART_RX_CTRL/DATA_reg[0]_0}]]
-connect_debug_port u_ila_0/probe1 [get_nets [list {Inst_UART_RX_CTRL/DATA_reg[1]_0}]]
-connect_debug_port u_ila_0/probe2 [get_nets [list {Inst_UART_RX_CTRL/DATA_reg[2]_0}]]
-connect_debug_port u_ila_0/probe3 [get_nets [list {Inst_UART_RX_CTRL/DATA_reg[2]_1}]]
-
-
-
-

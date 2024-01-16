@@ -54,6 +54,7 @@
     <Option Name="IPCachePermission" Val="write"/>
     <Option Name="EnableCoreContainer" Val="FALSE"/>
     <Option Name="EnableResourceEstimation" Val="FALSE"/>
+    <Option Name="XPMLibraries" Val="XPM_MEMORY"/>
     <Option Name="SimCompileState" Val="TRUE"/>
     <Option Name="CreateRefXciForCoreContainers" Val="FALSE"/>
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
@@ -90,13 +91,42 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/RGB_controller.vhd" Mode="AbsoluteFirst">
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/StdRtlPkg.vhd" Mode="AbsoluteFirst">
         <FileInfo>
+          <Attr Name="Library" Val="surf"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/UART_RX_CTRL.vhd" Mode="AbsoluteFirst">
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/Synchronizer.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerEdge.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartBrg.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartRx.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/RGB_controller.vhd" Mode="AbsoluteFirst">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -120,6 +150,517 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/ArbiterPkg.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Arbiter.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/RstSync.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShot.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerVector.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoWrFsm.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoRdFsm.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/SimpleDualPortRam.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/FifoOutputPipeline.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoAsync.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Gearbox.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/AsyncGearbox.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/CRC32Rtl.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/ClockDivider.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/CrcPkg.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/Crc32.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/Crc32Parallel.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Debouncer.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/TrueDualPortRam.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/LutRam.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/DualPortRam.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/xilinx/FifoXpm.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/dummy/FifoAlteraMfDummy.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoSync.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/Fifo.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/FifoCascade.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/FifoMux.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Heartbeat.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/xilinx/SinglePortRamPrimitive.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/LutFixedDelay.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/ip_integrator/MasterRamIpIntegrator.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Mux.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/OneShot.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/PwrUpRst.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/RegisterVector.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/RstPipeline.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/RstPipelineVector.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Scrambler.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/dummy/SimpleDualPortRamAlteraMfDummy.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/xilinx/SimpleDualPortRamXpm.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/ip_integrator/SlaveRamIpIntegrator.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvDelay.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvDelayFifo.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvDelayRam.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvFixedDelay.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerFifo.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncClockFreq.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncMinMax.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShotCnt.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShotCntVector.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncStatusVector.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncTrigPeriod.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncTrigRate.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncTrigRateVector.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShotVector.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/TextUtilPkg.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/xilinx/TrueDualPortRamXpm.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/ram/dummy/TrueDualPortRamXpmAlteraMfDummy.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/UART_RX_CTRL.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartTx.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartWrapper.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartAxiLiteMasterFsm.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartAxiLiteMaster.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/WatchDogRst.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/BuildInfoPkg.vhd" Mode="AbsoluteFirst">
         <FileInfo>
           <Attr Name="Library" Val="ruckus"/>
@@ -128,10 +669,18 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/PrbsPkg.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="GPIO_demo"/>
-        <Generic Name="BUILD_INFO_G" Val="2240&apos;h5fd000a8cba96608a57c5924adae49eb1563901800010000415254595F41375F3130303A2056697661646F2076323032322E322C20636F7272656C61746F72342E666E616C2E676F7620284B65726E656C292C204275696C74204D6F6E204A616E2031352031313A34373A3536204353542032303234206279206177686974626531000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+        <Generic Name="BUILD_INFO_G" Val="2240&apos;h000000000000000000000000000000000000000000010000415254595F41375F3130303A2056697661646F2076323032322E322C20636F7272656C61746F72342E666E616C2E676F7620284B65726E656C292C204275696C7420547565204A616E2031362031373A30343A3539204353542032303234206279206177686974626531000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -148,6 +697,102 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/tb/ClkRst.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/tb/FifoFwftTbSubModule.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/tb/FifoFwftTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/tb/FwftCntTbSubModule.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/fifo/tb/FwftCntTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/tb/GearboxTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/tb/HeartbeatTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/delay/tb/SlvDelayRamTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/tb/SynchronizerFifoTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/sync/tb/SynchronizerOneShotTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/protocols/uart/sim/UartAxiLiteMasterTb.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../submodules/surf/base/general/tb/glbl.vhd" Mode="AbsoluteFirst">
+        <FileInfo>
+          <Attr Name="Library" Val="surf"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="GPIO_demo"/>
@@ -170,6 +815,14 @@
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedInSteps" Val="synth_1"/>
+          <Attr Name="AutoDcp" Val="1"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/utils_1/imports/impl_1/GPIO_demo_routed.dcp">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedInSteps" Val="impl_1"/>
           <Attr Name="AutoDcp" Val="1"/>
         </FileInfo>
       </File>
@@ -213,7 +866,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="true" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/impl_1/GPIO_demo_routed.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022"/>
         <Step Id="init_design"/>

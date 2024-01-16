@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1705340975">
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1705446869" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/impl_1/GPIO_demo_routed.dcp">
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="GPIO_demo_postroute_physopted.rqs"/>
@@ -81,13 +81,42 @@
   <File Type="PA-TCL" Name="GPIO_demo.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/RGB_controller.vhd">
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/StdRtlPkg.vhd">
       <FileInfo>
+        <Attr Name="Library" Val="surf"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/UART_RX_CTRL.vhd">
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/Synchronizer.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerEdge.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartBrg.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartRx.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/RGB_controller.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -111,9 +140,528 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/ArbiterPkg.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/RstSync.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShot.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerVector.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoWrFsm.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoRdFsm.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/SimpleDualPortRam.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/FifoOutputPipeline.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoAsync.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Gearbox.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/AsyncGearbox.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/CRC32Rtl.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/ClockDivider.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/CrcPkg.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/Crc32.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/crc/rtl/Crc32Parallel.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Debouncer.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/TrueDualPortRam.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/LutRam.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/inferred/DualPortRam.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/xilinx/FifoXpm.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/dummy/FifoAlteraMfDummy.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/inferred/FifoSync.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/Fifo.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/FifoCascade.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/fifo/rtl/FifoMux.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Heartbeat.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/xilinx/SinglePortRamPrimitive.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/LutFixedDelay.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/ip_integrator/MasterRamIpIntegrator.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Mux.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/OneShot.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/PwrUpRst.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/RegisterVector.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/RstPipeline.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/RstPipelineVector.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/Scrambler.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/dummy/SimpleDualPortRamAlteraMfDummy.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/xilinx/SimpleDualPortRamXpm.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/ip_integrator/SlaveRamIpIntegrator.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvDelay.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvDelayFifo.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvDelayRam.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/delay/rtl/SlvFixedDelay.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerFifo.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncClockFreq.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncMinMax.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShotCnt.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShotCntVector.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncStatusVector.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncTrigPeriod.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncTrigRate.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SyncTrigRateVector.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/sync/rtl/SynchronizerOneShotVector.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/TextUtilPkg.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/xilinx/TrueDualPortRamXpm.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/ram/dummy/TrueDualPortRamXpmAlteraMfDummy.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../targets/ARTY_A7_100/hdl/UART_RX_CTRL.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartTx.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartWrapper.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartAxiLiteMasterFsm.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/protocols/uart/rtl/UartAxiLiteMaster.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/WatchDogRst.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/BuildInfoPkg.vhd">
       <FileInfo>
         <Attr Name="Library" Val="ruckus"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../submodules/surf/base/general/rtl/PrbsPkg.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="surf"/>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -146,6 +694,14 @@
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/utils_1/imports/impl_1/GPIO_demo_routed.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="impl_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
@@ -153,13 +709,13 @@
   <Strategy Version="1" Minor="2">
     <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022"/>
     <Step Id="init_design"/>
-    <Step Id="opt_design" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/opt.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/opt.tcl"/>
-    <Step Id="power_opt_design" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/power_opt.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/power_opt.tcl"/>
-    <Step Id="place_design" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/place.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/place.tcl"/>
-    <Step Id="post_place_power_opt_design" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/post_place_power_opt.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/post_place_power_opt.tcl"/>
-    <Step Id="phys_opt_design" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/phys_opt.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/phys_opt.tcl"/>
-    <Step Id="route_design" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/route.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/route.tcl"/>
-    <Step Id="post_route_phys_opt_design" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/post_route_phys_opt.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/post_route_phys_opt.tcl"/>
+    <Step Id="opt_design" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/opt.tcl" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/opt.tcl"/>
+    <Step Id="power_opt_design" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/power_opt.tcl" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/power_opt.tcl"/>
+    <Step Id="place_design" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/place.tcl" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/place.tcl"/>
+    <Step Id="post_place_power_opt_design" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/post_place_power_opt.tcl" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/post_place_power_opt.tcl"/>
+    <Step Id="phys_opt_design" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/phys_opt.tcl" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/phys_opt.tcl"/>
+    <Step Id="route_design" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/route.tcl" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/route.tcl"/>
+    <Step Id="post_route_phys_opt_design" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/post_route_phys_opt.tcl" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/pre/post_route_phys_opt.tcl"/>
     <Step Id="write_bitstream" PreStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/messages.tcl" PostStepTclHook="$PPRDIR/../../submodules/ruckus/vivado/run/post/gui_write.tcl"/>
   </Strategy>
 </GenRun>
