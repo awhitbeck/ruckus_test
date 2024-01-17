@@ -72,6 +72,7 @@ entity GPIO_demo is
            ja4          : out STD_LOGIC;
            ja7          : out STD_LOGIC;
            ja8          : out STD_LOGIC;
+           ja9          : out STD_LOGIC;
            UART_TXD 	: out  STD_LOGIC;
            UART_RXD 	: in  STD_LOGIC;
            RGB0_Red		: out  STD_LOGIC;
@@ -501,7 +502,8 @@ end process;
          clk       => CLK,              -- [in]
          rst       => reset,            -- [in]
          baudClkEn => UART_CLK);       -- [out]
-ja7 <= UART_CLK;
+ja7 <= CLK;
+ja9 <= UART_CLK;
    -------------------------------------------------------------------------------------------------
    -- UART Receiver
    -------------------------------------------------------------------------------------------------
