@@ -70,6 +70,7 @@ entity GPIO_demo is
            ja2          : out STD_LOGIC;
            ja3          : out STD_LOGIC;
            ja4          : out STD_LOGIC;
+           ja7          : out STD_LOGIC;
            UART_TXD 	: out  STD_LOGIC;
            UART_RXD 	: in  STD_LOGIC;
            RGB0_Red		: out  STD_LOGIC;
@@ -143,6 +144,9 @@ end component;
 --                variable is set to zero. The button string length is stored in the StrEnd
 --                variable. The state is set to SEND_CHAR.
 type UART_STATE_TYPE is (RST_REG, LD_INIT_STR, SEND_CHAR, RDY_LOW, WAIT_RDY, WAIT_BTN, LD_BTN_STR);
+
+type RESET_STATE_TYPE is (RUNNING, HOLD);
+
 
 --The CHAR_ARRAY type is a variable length array of 8 bit std_logic_vectors. 
 --Each std_logic_vector contains an ASCII value and represents a character in
@@ -434,12 +438,39 @@ begin
 	end if;
 end process;
 
+--Reset
+reset_controller : process(UART_CLK)
+  variable counter : natural :=0;
+  variable reset_state : RESET_STATE_TYPE := RUNNING;
+begin
+  if( rising_edge(UART_CLK) ) then
+    case reset_state is
+      when RUNNING =>
+        if(counter = 10000) then
+          counter := 0;
+          reset_state := HOLD;
+          reset <= '1';
+        else
+          counter := counter+1;
+        end if;
+      when HOLD =>
+        if(counter = 100) then
+          counter := 0;
+          reset_state := RUNNING;
+          reset <= '0';
+        else
+          counter := counter+1;
+        end if;
+    end case;
+  end if;
+end process;
+
 --Stream uart_in_ready and uart_in to PMOD pins for debugging
-debug_uart : process(CLK)
+debug_uart : process(UART_CLK)
 variable counter : natural := 0;
 begin
 
-    if(rising_edge(CLK)) then
+    if(rising_edge(UART_CLK)) then
         ja3 <= uart_in_ready;
         if counter < 8 then 
             ja4 <= uart_in(counter);
@@ -468,7 +499,7 @@ end process;
          clk       => CLK,              -- [in]
          rst       => reset,            -- [in]
          baudClkEn => UART_CLK);       -- [out]
-
+ja7 <= UART_CLK;
    -------------------------------------------------------------------------------------------------
    -- UART Receiver
    -------------------------------------------------------------------------------------------------
@@ -499,7 +530,7 @@ Inst_UART_TX_CTRL: UART_TX_CTRL port map(
 		UART_TX => uartTX 
 	);
 
-ja1 <= uartTX;
+ja1 <= uart_in_valid;
 UART_TXD <= uartTX;
 
 ----------------------------------------------------------

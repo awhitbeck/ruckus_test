@@ -205,15 +205,332 @@ set_msg_config  -id {Synth 8-614}  -new_severity {CRITICAL WARNING}
 set_msg_config  -id {Synth 8-5544}  -suppress 
 
 OPTRACE "impl_1" START { ROLLUP_1 }
+OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
+start_step init_design
+set ACTIVE_STEP init_design
+set rc [catch {
+  create_msg_db init_design.pb
+  set_param chipscope.maxJobs 8
+OPTRACE "create in-memory project" START { }
+  create_project -in_memory -part xc7a100tcsg324-1
+  set_property design_mode GateLvl [current_fileset]
+  set_param project.singleFileAddWarning.threshold 0
+OPTRACE "create in-memory project" END { }
+OPTRACE "set parameters" START { }
+  set_property webtalk.parent_dir /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.cache/wt [current_project]
+  set_property parent.project_path /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.xpr [current_project]
+  set_property ip_repo_paths /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ip_repo [current_project]
+  update_ip_catalog
+  set_property ip_output_repo /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.cache/ip [current_project]
+  set_property ip_cache_permissions {read write} [current_project]
+  set_property XPM_LIBRARIES {XPM_FIFO XPM_MEMORY} [current_project]
+OPTRACE "set parameters" END { }
+OPTRACE "add files" START { }
+  add_files -quiet /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.runs/synth_1/GPIO_demo.dcp
+OPTRACE "read constraints: implementation" START { }
+  read_xdc /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/constraints/Arty_Master.xdc
+OPTRACE "read constraints: implementation" END { }
+OPTRACE "add files" END { }
+OPTRACE "link_design" START { }
+  link_design -top GPIO_demo -part xc7a100tcsg324-1 
+OPTRACE "link_design" END { }
+OPTRACE "gray box cells" START { }
+OPTRACE "gray box cells" END { }
+OPTRACE "init_design_reports" START { REPORT }
+OPTRACE "init_design_reports" END { }
+OPTRACE "init_design_write_hwdef" START { }
+OPTRACE "init_design_write_hwdef" END { }
+  close_msg_db -file init_design.pb
+} RESULT]
+if {$rc} {
+  step_failed init_design
+  return -code error $RESULT
+} else {
+  end_step init_design
+  unset ACTIVE_STEP 
+}
+
+OPTRACE "Phase: Init Design" END { }
+OPTRACE "Phase: Opt Design" START { ROLLUP_AUTO }
+start_step opt_design
+set ACTIVE_STEP opt_design
+set rc [catch {
+  create_msg_db opt_design.pb
+OPTRACE "Opt Design: pre hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/opt.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/opt.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/opt.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/opt.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Opt Design: pre hook" END { }
+OPTRACE "read constraints: opt_design" START { }
+OPTRACE "read constraints: opt_design" END { }
+OPTRACE "opt_design" START { }
+  opt_design 
+OPTRACE "opt_design" END { }
+OPTRACE "read constraints: opt_design_post" START { }
+OPTRACE "read constraints: opt_design_post" END { }
+OPTRACE "Opt Design: post hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/opt.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/opt.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/opt.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/opt.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Opt Design: post hook" END { }
+OPTRACE "Opt Design: write_checkpoint" START { CHECKPOINT }
+  write_checkpoint -force GPIO_demo_opt.dcp
+OPTRACE "Opt Design: write_checkpoint" END { }
+OPTRACE "opt_design reports" START { REPORT }
+  create_report "impl_1_opt_report_drc_0" "report_drc -file GPIO_demo_drc_opted.rpt -pb GPIO_demo_drc_opted.pb -rpx GPIO_demo_drc_opted.rpx"
+OPTRACE "opt_design reports" END { }
+  close_msg_db -file opt_design.pb
+} RESULT]
+if {$rc} {
+  step_failed opt_design
+  return -code error $RESULT
+} else {
+  end_step opt_design
+  unset ACTIVE_STEP 
+}
+
+OPTRACE "Phase: Opt Design" END { }
+OPTRACE "Phase: Place Design" START { ROLLUP_AUTO }
+start_step place_design
+set ACTIVE_STEP place_design
+set rc [catch {
+  create_msg_db place_design.pb
+OPTRACE "Place Design: pre hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/place.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/place.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/place.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/place.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Place Design: pre hook" END { }
+OPTRACE "read constraints: place_design" START { }
+OPTRACE "read constraints: place_design" END { }
+OPTRACE "read incremental checkpoint" START { }
+  read_checkpoint -auto_incremental  -incremental /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.srcs/utils_1/imports/impl_1/GPIO_demo_routed.dcp
+  catch { report_incremental_reuse -file GPIO_demo_incremental_reuse_pre_placed.rpt }
+OPTRACE "read incremental checkpoint" END { }
+  if { [llength [get_debug_cores -quiet] ] > 0 }  { 
+OPTRACE "implement_debug_core" START { }
+    implement_debug_core 
+OPTRACE "implement_debug_core" END { }
+  } 
+OPTRACE "place_design" START { }
+  place_design 
+OPTRACE "place_design" END { }
+OPTRACE "read constraints: place_design_post" START { }
+OPTRACE "read constraints: place_design_post" END { }
+OPTRACE "Place Design: post hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/place.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/place.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/place.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/place.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Place Design: post hook" END { }
+OPTRACE "Place Design: write_checkpoint" START { CHECKPOINT }
+  write_checkpoint -force GPIO_demo_placed.dcp
+OPTRACE "Place Design: write_checkpoint" END { }
+OPTRACE "place_design reports" START { REPORT }
+  create_report "impl_1_place_report_io_0" "report_io -file GPIO_demo_io_placed.rpt"
+  create_report "impl_1_place_report_utilization_0" "report_utilization -file GPIO_demo_utilization_placed.rpt -pb GPIO_demo_utilization_placed.pb"
+  create_report "impl_1_place_report_control_sets_0" "report_control_sets -verbose -file GPIO_demo_control_sets_placed.rpt"
+OPTRACE "place_design reports" END { }
+  close_msg_db -file place_design.pb
+} RESULT]
+if {$rc} {
+  step_failed place_design
+  return -code error $RESULT
+} else {
+  end_step place_design
+  unset ACTIVE_STEP 
+}
+
+OPTRACE "Phase: Place Design" END { }
+OPTRACE "Phase: Physical Opt Design" START { ROLLUP_AUTO }
+start_step phys_opt_design
+set ACTIVE_STEP phys_opt_design
+set rc [catch {
+  create_msg_db phys_opt_design.pb
+OPTRACE "Post-Place Phys Opt Design: pre hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/phys_opt.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/phys_opt.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/phys_opt.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/phys_opt.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Post-Place Phys Opt Design: pre hook" END { }
+OPTRACE "read constraints: phys_opt_design" START { }
+OPTRACE "read constraints: phys_opt_design" END { }
+OPTRACE "phys_opt_design" START { }
+  phys_opt_design 
+OPTRACE "phys_opt_design" END { }
+OPTRACE "read constraints: phys_opt_design_post" START { }
+OPTRACE "read constraints: phys_opt_design_post" END { }
+OPTRACE "Post-Place Phys Opt Design: post hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/phys_opt.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/phys_opt.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/phys_opt.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/phys_opt.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Post-Place Phys Opt Design: post hook" END { }
+OPTRACE "Post-Place Phys Opt Design: write_checkpoint" START { CHECKPOINT }
+  write_checkpoint -force GPIO_demo_physopt.dcp
+OPTRACE "Post-Place Phys Opt Design: write_checkpoint" END { }
+OPTRACE "phys_opt_design report" START { REPORT }
+OPTRACE "phys_opt_design report" END { }
+  close_msg_db -file phys_opt_design.pb
+} RESULT]
+if {$rc} {
+  step_failed phys_opt_design
+  return -code error $RESULT
+} else {
+  end_step phys_opt_design
+  unset ACTIVE_STEP 
+}
+
+OPTRACE "Phase: Physical Opt Design" END { }
+OPTRACE "Phase: Route Design" START { ROLLUP_AUTO }
+start_step route_design
+set ACTIVE_STEP route_design
+set rc [catch {
+  create_msg_db route_design.pb
+OPTRACE "Route Design: pre hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/route.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/route.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/route.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/route.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Route Design: pre hook" END { }
+OPTRACE "read constraints: route_design" START { }
+OPTRACE "read constraints: route_design" END { }
+OPTRACE "route_design" START { }
+  route_design 
+OPTRACE "route_design" END { }
+OPTRACE "read constraints: route_design_post" START { }
+OPTRACE "read constraints: route_design_post" END { }
+OPTRACE "Route Design: post hook" START { }
+  set src_rc [catch { 
+    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/route.tcl"
+    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/route.tcl
+  } _RESULT] 
+  if {$src_rc} { 
+    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
+    if { $tool_flow eq {SDx} } { 
+      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
+      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/route.tcl failed"
+    } else {
+      send_msg_id runtcl-1 status "$_RESULT"
+      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/route.tcl failed"
+    }
+    return -code error
+  }
+OPTRACE "Route Design: post hook" END { }
+OPTRACE "Route Design: write_checkpoint" START { CHECKPOINT }
+  write_checkpoint -force GPIO_demo_routed.dcp
+OPTRACE "Route Design: write_checkpoint" END { }
+OPTRACE "route_design reports" START { REPORT }
+  create_report "impl_1_route_report_drc_0" "report_drc -file GPIO_demo_drc_routed.rpt -pb GPIO_demo_drc_routed.pb -rpx GPIO_demo_drc_routed.rpx"
+  create_report "impl_1_route_report_methodology_0" "report_methodology -file GPIO_demo_methodology_drc_routed.rpt -pb GPIO_demo_methodology_drc_routed.pb -rpx GPIO_demo_methodology_drc_routed.rpx"
+  create_report "impl_1_route_report_power_0" "report_power -file GPIO_demo_power_routed.rpt -pb GPIO_demo_power_summary_routed.pb -rpx GPIO_demo_power_routed.rpx"
+  create_report "impl_1_route_report_route_status_0" "report_route_status -file GPIO_demo_route_status.rpt -pb GPIO_demo_route_status.pb"
+  create_report "impl_1_route_report_timing_summary_0" "report_timing_summary -max_paths 10 -report_unconstrained -file GPIO_demo_timing_summary_routed.rpt -pb GPIO_demo_timing_summary_routed.pb -rpx GPIO_demo_timing_summary_routed.rpx -warn_on_violation "
+  create_report "impl_1_route_report_incremental_reuse_0" "report_incremental_reuse -file GPIO_demo_incremental_reuse_routed.rpt"
+  create_report "impl_1_route_report_clock_utilization_0" "report_clock_utilization -file GPIO_demo_clock_utilization_routed.rpt"
+  create_report "impl_1_route_report_bus_skew_0" "report_bus_skew -warn_on_violation -file GPIO_demo_bus_skew_routed.rpt -pb GPIO_demo_bus_skew_routed.pb -rpx GPIO_demo_bus_skew_routed.rpx"
+OPTRACE "route_design reports" END { }
+OPTRACE "route_design misc" START { }
+  close_msg_db -file route_design.pb
+} RESULT]
+if {$rc} {
+OPTRACE "route_design write_checkpoint" START { CHECKPOINT }
+OPTRACE "route_design write_checkpoint" END { }
+  write_checkpoint -force GPIO_demo_routed_error.dcp
+  step_failed route_design
+  return -code error $RESULT
+} else {
+  end_step route_design
+  unset ACTIVE_STEP 
+}
+
+OPTRACE "route_design misc" END { }
+OPTRACE "Phase: Route Design" END { }
 OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
 OPTRACE "write_bitstream setup" START { }
 start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_param chipscope.maxJobs 8
-  open_checkpoint GPIO_demo_routed.dcp
-  set_property webtalk.parent_dir /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.cache/wt [current_project]
 OPTRACE "Write Bitstream: pre hook" START { }
   set src_rc [catch { 
     puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/messages.tcl"
@@ -231,7 +548,6 @@ OPTRACE "Write Bitstream: pre hook" START { }
     return -code error
   }
 OPTRACE "Write Bitstream: pre hook" END { }
-set_property TOP GPIO_demo [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
   set_property XPM_LIBRARIES {XPM_FIFO XPM_MEMORY} [current_project]
