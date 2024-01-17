@@ -71,6 +71,7 @@ entity GPIO_demo is
            ja3          : out STD_LOGIC;
            ja4          : out STD_LOGIC;
            ja7          : out STD_LOGIC;
+           ja8          : out STD_LOGIC;
            UART_TXD 	: out  STD_LOGIC;
            UART_RXD 	: in  STD_LOGIC;
            RGB0_Red		: out  STD_LOGIC;
@@ -464,6 +465,7 @@ begin
     end case;
   end if;
 end process;
+ja8 <= reset;
 
 --Stream uart_in_ready and uart_in to PMOD pins for debugging
 debug_uart : process(UART_CLK)
