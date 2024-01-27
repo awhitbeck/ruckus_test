@@ -116,6 +116,14 @@ OPTRACE "impl_1" END { }
 }
 
 set_msg_config  -id {Synth 8-256}  -suppress 
+set_msg_config  -id {Synth 8-113}  -suppress 
+set_msg_config  -id {Synth 8-226}  -suppress 
+set_msg_config  -id {Synth 8-312}  -suppress 
+set_msg_config  -id {Synth 8-4472}  -suppress 
+set_msg_config  -id {Synth 8-4480}  -suppress 
+set_msg_config  -id {Synth 8-3331}  -suppress 
+set_msg_config  -id {Synth 8-3332}  -suppress 
+set_msg_config  -id {Synth 8-5544}  -suppress 
 set_msg_config  -id {Synth 8-5545}  -suppress 
 set_msg_config  -id {Synth 8-5546}  -suppress 
 set_msg_config  -id {Opt   31-422}  -suppress 
@@ -126,7 +134,6 @@ set_msg_config  -id {VRFC 10-163}  -suppress
 set_msg_config  -id {VRFC 10-165}  -suppress 
 set_msg_config  -id {Simtcl 6-16}  -suppress 
 set_msg_config  -id {Simtcl 6-17}  -suppress 
-set_msg_config  -id {Synth 8-113}  -suppress 
 set_msg_config  -id {Constraints 18-4434}  -suppress 
 set_msg_config  -id {Drc 23-20}  -suppress 
 set_msg_config  -id {DRC CHECK-3}  -suppress 
@@ -137,7 +144,6 @@ set_msg_config  -id {DRC LOCE-1}  -suppress
 set_msg_config  -id {DRC RTSTAT-10}  -suppress 
 set_msg_config  -id {DRC REQP-1839}  -suppress 
 set_msg_config  -id {DRC REQP-1840}  -suppress 
-set_msg_config  -id {Synth 8-226}  -suppress 
 set_msg_config  -id {Drc REQP-1857]}  -suppress 
 set_msg_config  -id {Drc REQP-1858]}  -suppress 
 set_msg_config  -id {DRC REQP-181}  -suppress 
@@ -148,7 +154,6 @@ set_msg_config  -id {Common 17-301}  -suppress
 set_msg_config  -id {Pwropt 34-142}  -suppress 
 set_msg_config  -id {Common 17-1361}  -suppress 
 set_msg_config  -id {Vivado 12-4430}  -suppress 
-set_msg_config  -id {Synth 8-312}  -suppress 
 set_msg_config  -id {Vivado 12-1790}  -suppress 
 set_msg_config  -id {Vivado 12-3645}  -suppress 
 set_msg_config  -id {Project 1-486}  -suppress 
@@ -159,7 +164,6 @@ set_msg_config  -id {Vivado 12-5470}  -suppress
 set_msg_config  -id {Project 1-841}  -suppress 
 set_msg_config  -id {Project 1-863}  -suppress 
 set_msg_config  -id {Project 1-840}  -suppress 
-set_msg_config  -id {Synth 8-4472}  -suppress 
 set_msg_config  -id {Timing 38-3}  -new_severity {INFO} 
 set_msg_config  -id {Synth 8-3848}  -new_severity {INFO} 
 set_msg_config  -id {Synth 8-3936}  -new_severity {INFO} 
@@ -170,7 +174,6 @@ set_msg_config  -id {Vivado 12-1008}  -new_severity {INFO}
 set_msg_config  -id {Power 33-332}  -new_severity {INFO} 
 set_msg_config  -id {Synth 8-3512}  -new_severity {ERROR} 
 set_msg_config  -id {VRFC 10-664}  -new_severity {ERROR} 
-set_msg_config  -id {Synth 8-4480}  -suppress 
 set_msg_config  -id {filemgmt 20-1318}  -new_severity {ERROR} 
 set_msg_config  -id {IP_Flow 19-1663}  -new_severity {ERROR} 
 set_msg_config  -id {IP_Flow 19-11772}  -new_severity {ERROR} 
@@ -181,7 +184,6 @@ set_msg_config  -id {Project 1-498}  -new_severity {CRITICAL WARNING}
 set_msg_config  -id {Synth 8-3330}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-3919}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-153}  -new_severity {CRITICAL WARNING} 
-set_msg_config  -id {Synth 8-3331}  -suppress 
 set_msg_config  -id {Synth 8-3295}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-5835}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Route 35-328}  -new_severity {CRITICAL WARNING} 
@@ -192,7 +194,6 @@ set_msg_config  -id {Vivado 12-1411}  -new_severity {ERROR}
 set_msg_config  -id {HDL 9-806}  -new_severity {ERROR} 
 set_msg_config  -id {Opt 31-80}  -new_severity {ERROR} 
 set_msg_config  -id {Route 35-14}  -new_severity {ERROR} 
-set_msg_config  -id {Synth 8-3332}  -suppress 
 set_msg_config  -id {AVAL-46}  -new_severity {ERROR} 
 set_msg_config  -id {Timing 38-282}  -new_severity {ERROR} 
 set_msg_config  -id {Common 17-356}  -new_severity {WARNING} 
@@ -202,7 +203,6 @@ set_msg_config  -id {MDRV-1}  -new_severity {ERROR}
 set_msg_config  -id {Synth 8-3848}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-327}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-614}  -new_severity {CRITICAL WARNING} 
-set_msg_config  -id {Synth 8-5544}  -suppress 
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -210,7 +210,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 8
+  set_param chipscope.maxJobs 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
@@ -559,23 +559,6 @@ OPTRACE "write_bitstream" END { }
 OPTRACE "write_bitstream misc" START { }
 OPTRACE "read constraints: write_bitstream_post" START { }
 OPTRACE "read constraints: write_bitstream_post" END { }
-OPTRACE "Write Bitstream: post hook" START { }
-  set src_rc [catch { 
-    puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/gui_write.tcl"
-    source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/gui_write.tcl
-  } _RESULT] 
-  if {$src_rc} { 
-    set tool_flow [get_property -quiet TOOL_FLOW [current_project -quiet]]
-    if { $tool_flow eq {SDx} } { 
-      send_gid_msg -id 2 -ssname VPL_TCL -severity ERROR $_RESULT
-      send_gid_msg -id 3 -ssname VPL_TCL -severity ERROR "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/gui_write.tcl failed"
-    } else {
-      send_msg_id runtcl-1 status "$_RESULT"
-      send_msg_id runtcl-2 status "sourcing script /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/post/gui_write.tcl failed"
-    }
-    return -code error
-  }
-OPTRACE "Write Bitstream: post hook" END { }
   catch {write_debug_probes -quiet -force GPIO_demo}
   catch {file copy -force GPIO_demo.ltx debug_nets.ltx}
   close_msg_db -file write_bitstream.pb

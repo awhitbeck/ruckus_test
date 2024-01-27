@@ -70,8 +70,15 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 8
 set_msg_config  -id {Synth 8-256}  -suppress 
+set_msg_config  -id {Synth 8-113}  -suppress 
+set_msg_config  -id {Synth 8-226}  -suppress 
+set_msg_config  -id {Synth 8-312}  -suppress 
+set_msg_config  -id {Synth 8-4472}  -suppress 
+set_msg_config  -id {Synth 8-4480}  -suppress 
+set_msg_config  -id {Synth 8-3331}  -suppress 
+set_msg_config  -id {Synth 8-3332}  -suppress 
+set_msg_config  -id {Synth 8-5544}  -suppress 
 set_msg_config  -id {Synth 8-5545}  -suppress 
 set_msg_config  -id {Synth 8-5546}  -suppress 
 set_msg_config  -id {Opt   31-422}  -suppress 
@@ -82,7 +89,6 @@ set_msg_config  -id {VRFC 10-163}  -suppress
 set_msg_config  -id {VRFC 10-165}  -suppress 
 set_msg_config  -id {Simtcl 6-16}  -suppress 
 set_msg_config  -id {Simtcl 6-17}  -suppress 
-set_msg_config  -id {Synth 8-113}  -suppress 
 set_msg_config  -id {Constraints 18-4434}  -suppress 
 set_msg_config  -id {Drc 23-20}  -suppress 
 set_msg_config  -id {DRC CHECK-3}  -suppress 
@@ -93,7 +99,6 @@ set_msg_config  -id {DRC LOCE-1}  -suppress
 set_msg_config  -id {DRC RTSTAT-10}  -suppress 
 set_msg_config  -id {DRC REQP-1839}  -suppress 
 set_msg_config  -id {DRC REQP-1840}  -suppress 
-set_msg_config  -id {Synth 8-226}  -suppress 
 set_msg_config  -id {Drc REQP-1857]}  -suppress 
 set_msg_config  -id {Drc REQP-1858]}  -suppress 
 set_msg_config  -id {DRC REQP-181}  -suppress 
@@ -104,7 +109,6 @@ set_msg_config  -id {Common 17-301}  -suppress
 set_msg_config  -id {Pwropt 34-142}  -suppress 
 set_msg_config  -id {Common 17-1361}  -suppress 
 set_msg_config  -id {Vivado 12-4430}  -suppress 
-set_msg_config  -id {Synth 8-312}  -suppress 
 set_msg_config  -id {Vivado 12-1790}  -suppress 
 set_msg_config  -id {Vivado 12-3645}  -suppress 
 set_msg_config  -id {Project 1-486}  -suppress 
@@ -115,7 +119,6 @@ set_msg_config  -id {Vivado 12-5470}  -suppress
 set_msg_config  -id {Project 1-841}  -suppress 
 set_msg_config  -id {Project 1-863}  -suppress 
 set_msg_config  -id {Project 1-840}  -suppress 
-set_msg_config  -id {Synth 8-4472}  -suppress 
 set_msg_config  -id {Timing 38-3}  -new_severity {INFO} 
 set_msg_config  -id {Synth 8-3848}  -new_severity {INFO} 
 set_msg_config  -id {Synth 8-3936}  -new_severity {INFO} 
@@ -126,7 +129,6 @@ set_msg_config  -id {Vivado 12-1008}  -new_severity {INFO}
 set_msg_config  -id {Power 33-332}  -new_severity {INFO} 
 set_msg_config  -id {Synth 8-3512}  -new_severity {ERROR} 
 set_msg_config  -id {VRFC 10-664}  -new_severity {ERROR} 
-set_msg_config  -id {Synth 8-4480}  -suppress 
 set_msg_config  -id {filemgmt 20-1318}  -new_severity {ERROR} 
 set_msg_config  -id {IP_Flow 19-1663}  -new_severity {ERROR} 
 set_msg_config  -id {IP_Flow 19-11772}  -new_severity {ERROR} 
@@ -137,7 +139,6 @@ set_msg_config  -id {Project 1-498}  -new_severity {CRITICAL WARNING}
 set_msg_config  -id {Synth 8-3330}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-3919}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-153}  -new_severity {CRITICAL WARNING} 
-set_msg_config  -id {Synth 8-3331}  -suppress 
 set_msg_config  -id {Synth 8-3295}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-5835}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Route 35-328}  -new_severity {CRITICAL WARNING} 
@@ -148,7 +149,6 @@ set_msg_config  -id {Vivado 12-1411}  -new_severity {ERROR}
 set_msg_config  -id {HDL 9-806}  -new_severity {ERROR} 
 set_msg_config  -id {Opt 31-80}  -new_severity {ERROR} 
 set_msg_config  -id {Route 35-14}  -new_severity {ERROR} 
-set_msg_config  -id {Synth 8-3332}  -suppress 
 set_msg_config  -id {AVAL-46}  -new_severity {ERROR} 
 set_msg_config  -id {Timing 38-282}  -new_severity {ERROR} 
 set_msg_config  -id {Common 17-356}  -new_severity {WARNING} 
@@ -158,7 +158,6 @@ set_msg_config  -id {MDRV-1}  -new_severity {ERROR}
 set_msg_config  -id {Synth 8-3848}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-327}  -new_severity {CRITICAL WARNING} 
 set_msg_config  -id {Synth 8-614}  -new_severity {CRITICAL WARNING} 
-set_msg_config  -id {Synth 8-5544}  -suppress 
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -174,7 +173,7 @@ set_property ip_repo_paths /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_
 update_ip_catalog
 set_property ip_output_repo /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/build/ARTY_A7_100/ARTY_A7_100_project.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-set_property generic BUILD_INFO_G=2240'h000000000000000000000000000000000000000000010000415254595F41375F3130303A2056697661646F2076323032322E322C20636F7272656C61746F72342E666E616C2E676F7620284B65726E656C292C204275696C7420547565204A616E2031362031383A33323A3535204353542032303234206279206177686974626531000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 [current_fileset]
+set_property generic BUILD_INFO_G=2240'h000000000000000000000000000000000000000000010000415254595F41375F3130303A2056697661646F2076323032322E322C20636F7272656C61746F72342E666E616C2E676F7620284B65726E656C292C204275696C7420576564204A616E2032342032303A33313A3534204353542032303234206279206177686974626531000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 [current_fileset]
 set src_rc [catch { 
   puts "source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/synth.tcl"
   source /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/ruckus/vivado/run/pre/synth.tcl
@@ -193,12 +192,7 @@ read_vhdl -library surf {
   /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/protocols/uart/rtl/UartBrg.vhd
   /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/protocols/uart/rtl/UartRx.vhd
 }
-read_vhdl -library xil_defaultlib {
-  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/RGB_controller.vhd
-  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/UART_TX_CTRL.vhd
-  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/debouncer.vhd
-  /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/GPIO_Demo.vhd
-}
+read_vhdl -library xil_defaultlib /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100/hdl/GPIO_Demo.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

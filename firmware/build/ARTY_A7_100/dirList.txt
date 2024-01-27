@@ -1,9 +1,2 @@
-/home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/delay
-/home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/crc
-/home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/fifo
-/home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/general
-/home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/ram
-/home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base/sync
-/home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/base
 /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/submodules/surf/protocols/uart
 /home/awhitbe1/LDMX_fw/ARTY_UART/firmware/targets/ARTY_A7_100
